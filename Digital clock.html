@@ -1,0 +1,68 @@
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    body{
+        background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,79,121,1) 18%, rgba(0,254,255,1) 100%);
+    }
+    .clock{
+        width:100%;
+        height:100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #box{
+        border:3px solid white;
+        font-size: 30;
+        padding:10px;
+        margin: 0px 15px;
+        color:white;
+    }
+    
+
+</style>
+<html>
+    <body>
+        <div class="clock">
+            <div id="box">
+                <span id="hour">00</span>
+                <span>:</span>
+                <span id="minutes">00</span>
+                <span>:</span>
+                <span id="seconds">00 </span>
+                <span id="ampm">AM</span>
+                
+
+                
+            </div>
+        </div>
+    <script>
+        let ampm=document.getElementById("ampm")
+        function display(){
+            let datetime= new Date()
+
+            let hours1=datetime.getHours()
+            let minutes1=datetime.getMinutes()
+            let second1=datetime.getSeconds()
+            if(hours1>12){
+                hours1=hours1-12
+                ampm.innerHTML="PM"
+
+            }
+            
+            document.getElementById('hour').innerHTML=zer0(hours1)
+            document.getElementById('minutes').innerHTML=zer0(minutes1)
+            document.getElementById('seconds').innerHTML=zer0(second1)
+
+
+        }
+        function zer0(num){
+            return num<10? "0"+num:num
+        }
+        setInterval(display,500)
+    </script>
+    </body>
+</html>
